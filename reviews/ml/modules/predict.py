@@ -21,5 +21,5 @@ class Model:
 
     def predict(self,):
         loaded_model = pickle.load(open(self.model, 'rb'))
-        result = loaded_model.predict(self.X)
+        result = loaded_model.predict(self.X).clip(min=1, max=10).round()
         return str(int(result))
